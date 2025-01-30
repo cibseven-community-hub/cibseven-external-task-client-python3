@@ -1,9 +1,9 @@
 [![Community Extension](https://img.shields.io/badge/Community%20Extension-An%20open%20source%20community%20maintained%20project-FF4700)](https://github.com/camunda-community-hub/community)[![Lifecycle: Stable](https://img.shields.io/badge/Lifecycle-Stable-brightgreen)](https://github.com/Camunda-Community-Hub/community/blob/main/extension-lifecycle.md#stable-)
 
-# camunda-external-task-client-python3
-![camunda-external-task-client-python3](https://github.com/trustfactors/camunda-external-task-client-python3/workflows/camunda-external-task-client-python3/badge.svg)
+# cibseven-external-task-client-python3
+![cibseven-external-task-client-python3](https://github.com/trustfactors/camunda-external-task-client-python3/workflows/camunda-external-task-client-python3/badge.svg)
 
-This repository contains Camunda External Task Client written in Python3.
+This repository contains CIB seven External Task Client written in Python3.
 
 
 Implement your [BPMN Service Task](https://docs.camunda.org/manual/latest/user-guide/process-engine/external-tasks/) in Python3.
@@ -13,7 +13,7 @@ Implement your [BPMN Service Task](https://docs.camunda.org/manual/latest/user-g
 ## Installing
 Add following line to `requirements.txt` of your Python project.
 ```
-git+https://github.com/trustfactors/camunda-external-task-client-python3.git/#egg=camunda-external-task-client-python3
+git+https://github.com/cibseven-community-hub/cibseven-external-task-client-python3/#egg=cibseven-external-task-client-python3
 ```
 
 Or use pip to install as shown below:
@@ -21,19 +21,19 @@ Or use pip to install as shown below:
 pip install camunda-external-task-client-python3
 ```
 
-## Running Camunda with Docker
-To run the examples provided in [examples](./examples) folder, you need to have Camunda running locally or somewhere.
+## Running CIB seven with Docker
+To run the examples provided in [examples](./examples) folder, you need to have CIB seven running locally or somewhere.
 
-To run Camunda locally with Postgres DB as backend, you can use [docker-compose.yml](./docker-compose.yml) file.
+To run CIB seven locally with Postgres DB as backend, you can use [docker-compose.yml](./docker-compose.yml) file.
 
 ```
 $> docker-compose -f docker-compose.yml up
 ```
 ### Auth Basic Examples
 
-To run the examples with Auth Basic provided in [examples/examples_auth_basic](./examples/examples_auth_basic) folder, you need to have Camunda with AuthBasic, running locally or somewhere.
+To run the examples with Auth Basic provided in [examples/examples_auth_basic](./examples/examples_auth_basic) folder, you need to have CIB seven with AuthBasic, running locally or somewhere.
 
-To run Camunda with AuthBasic locally with Postgres DB as backend, you can use [docker-compose-auth.yml](./docker-compose-auth.yml) file.
+To run CIB seven with AuthBasic locally with Postgres DB as backend, you can use [docker-compose-auth.yml](./docker-compose-auth.yml) file.
 
 ```
 $> docker-compose -f docker-compose-auth.yml up
@@ -41,9 +41,9 @@ $> docker-compose -f docker-compose-auth.yml up
 
 ## Usage
 
-1.  Make sure to have [Camunda](https://camunda.com/download/) running.
+1.  Make sure to have [CIB seven](https://github.com/cibseven/cibseven) running.
 2.  Create a simple process model with an External Service Task and define the topic as 'topicName'.
-3.  Deploy the process to the Camunda BPM engine.
+3.  Deploy the process to the CIB seven BPM engine.
 4.  In your Python code:
 
 ```python
@@ -96,12 +96,12 @@ if __name__ == '__main__':
 External Tasks are service tasks whose execution differs particularly from the execution of other service tasks (e.g. Human Tasks).
 The execution works in a way that units of work are polled from the engine before being completed.
 
-**camunda-external-task-client-python** allows you to create easily such client in Python3.
+**cibseven-external-task-client-python** allows you to create easily such client in Python3.
 
 ## Features
 
 ### [Start process](https://docs.camunda.org/manual/latest/reference/rest/process-definition/post-start-process-instance/)
-Camunda provides functionality to start a process instance for a given process definition.
+CIB seven provides functionality to start a process instance for a given process definition.
 
 To start a process instance, we can use `start_process()` from [engine_client.py](./camunda/client/engine_client.py#L24)
 
@@ -115,7 +115,7 @@ resp_json = client.start_process(process_key="PARALLEL_STEPS_EXAMPLE", variables
 
 ### [Fetch and Lock](https://docs.camunda.org/manual/latest/reference/rest/external-task/fetch/)
 
-`ExternalTaskWorker(worker_id="1").subscribe("topicName", handle_task)` starts long polling of the Camunda engine for external tasks.
+`ExternalTaskWorker(worker_id="1").subscribe("topicName", handle_task)` starts long polling of the CIB seven engine for external tasks.
 
 * Polling tasks from the engine works by performing a fetch & lock operation of tasks that have subscriptions. It then calls the handler function passed to `subscribe()` function. i.e. `handle_task` in above example.
 * Long Polling is done periodically based on the `asyncResponseTimeout` configuration. Read more about [Long Polling](https://docs.camunda.org/manual/latest/user-guide/process-engine/external-tasks/#long-polling-to-fetch-and-lock-external-tasks).
