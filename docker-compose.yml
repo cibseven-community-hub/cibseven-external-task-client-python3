@@ -11,9 +11,9 @@ services:
     ports:
       - "5432:5432"
 
-  camunda_workflow:
-    image: camunda/camunda-bpm-platform:7.13.0
-    container_name: camunda_workflow_example
+  cibseven_workflow:
+    image: cibseven/cibseven:1.1.0
+    container_name: cibseven_workflow_example
     depends_on:
       - postgres
     ports:
